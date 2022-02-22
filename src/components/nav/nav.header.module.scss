@@ -1,0 +1,110 @@
+@import '../../../styles/base.scss';
+
+.nav_header {
+  width: 1080px;
+  height: 120px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.nav_item,
+.nav_item2 {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  border-right: 1px solid #ddd;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nav_item2 {
+  flex-direction: row;
+}
+.nav_item_register {
+  display: block;
+  flex: 1;
+  line-height: 40px;
+  background-color: $baseColor;
+  color: $wightColor;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $lightBaseColor;
+    color: $blackColor;
+  }
+}
+.nav_item_login {
+  display: block;
+  flex: 1;
+  line-height: 40px;
+  background-color: $wightColor;
+  color: $baseColor;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $lightBaseColor;
+    color: $blackColor;
+  }
+}
+.nav_item_title {
+  text-align: center;
+}
+
+.navs {
+  flex: 5;
+  display: flex;
+}
+.nav_header_a {
+  display: inline-block;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav_header_logo {
+  margin: auto;
+}
+
+.nav_item_child {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #aaa;
+  width: 100%;
+  display: block;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 119px;
+  display: none;
+}
+
+.nav_item_child_title {
+  display: inline-block;
+  margin: 30px;
+  color: #000;
+  text-decoration: none;
+}
+.nav_item_child_title:hover {
+  color: $baseColor;
+  text-decoration: none;
+}
+
+.nav_item:hover .nav_item_child {
+  display: block;
+  cursor: pointer;
+}
+.nav_item_icon {
+  font-size: 36px;
+  margin: auto;
+}
+
+.portal_menu_item {
+  display: block !important;
+  padding: 10px !important;
+}

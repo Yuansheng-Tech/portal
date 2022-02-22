@@ -1,0 +1,1 @@
+export const baseApi = 'http://api.yuansheng.com/api'
