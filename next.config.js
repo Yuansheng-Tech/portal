@@ -2,6 +2,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['admin.yuanshengyoupin.com', 'at.alicdn.com', 'admin.yuansheng.com'],
+    domains: ['admin.yuanshengyoupin.com', 'at.alicdn.com', 'admin.yuansheng.com', 'editor.yuansheng.com'],
   },
 };

@@ -1,5 +1,5 @@
 /**
- * For Micro Application
+ * For Micro Application 404 page
  * @returns null
  */
  export default function() {

@@ -1,5 +1,8 @@
 import * as React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -22,9 +25,11 @@ export default function({
     username = localStorage.getItem('username');
   }
   
+  const router = useRouter()
+  
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -68,7 +73,7 @@ export default function({
           aria-controls={open ? 'basic-menu' : undefined}
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
+          onClick={handleMenuClick}
         >
           <Avatar>{username}</Avatar>
         </Button>
@@ -81,21 +86,27 @@ export default function({
             'aria-labelledby': 'basic-button',
           }}
         >
-          {/* <MenuItem onClick={handleClose} className={styles.portal_menu_item}>
-            <ListItemIcon>
+          <MenuItem onClick={(e) => router.push('/apps')} className={styles.portal_menu_item}>
+            <ListItemIcon className={styles.portal_menu_icon}>
               <Settings fontSize="small" />
             </ListItemIcon>
-            我的账号
+            应用列表
+          </MenuItem>
+          {/* <MenuItem onClick={handleClose} className={styles.portal_menu_item}>
+            <ListItemIcon className={styles.portal_menu_icon}>
+              <Settings fontSize="small" />
+            </ListItemIcon>
+            <span>我的账号</span>
           </MenuItem> */}
           <MenuItem onClick={logout} className={styles.portal_menu_item}>
-            <ListItemIcon>
+            <ListItemIcon className={styles.portal_menu_icon}>
               <Logout fontSize="small" />
             </ListItemIcon>
             退出
           </MenuItem>
         </Menu></> : <>
-        <a href="/login" className={styles.nav_item_login}>登录</a>
-        <a href="/register" className={styles.nav_item_register}>注册</a>
+        <Link href="/login"><a className={styles.nav_item_login}>登录</a></Link>
+        <Link href="/register"><a className={styles.nav_item_register}>注册</a></Link>
         </>}
       </div>}
     </div>

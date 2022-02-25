@@ -7,7 +7,7 @@
   position: relative;
   display: flex;
   cursor: pointer;
-  z-index: 10000;
+  z-index: 800;
 }
 
 .nav_item,
@@ -34,6 +34,7 @@
   &:hover {
     background-color: $lightBaseColor;
     color: $blackColor;
+    text-decoration: none;
   }
 }
 .nav_item_login {
@@ -47,6 +48,7 @@
   &:hover {
     background-color: $lightBaseColor;
     color: $blackColor;
+    text-decoration: none;
   }
 }
 .nav_item_title {
@@ -107,4 +109,8 @@
 .portal_menu_item {
   display: block !important;
   padding: 10px !important;
+}
+
+.portal_menu_icon {
+  vertical-align: middle  !important;
 }

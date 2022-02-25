@@ -17,17 +17,17 @@ export const Microconfig = [
     loader,
   },
   {
-    name: 'wechats',
+    name: 'apps',
     entry: 'http://admin.yuansheng.com',
     container: '#mainView',
-    activeRule: '/wechats',
+    activeRule: '/apps',
     loader,
   },
   {
-    name: 'wechat',
+    name: 'app',
     entry: 'http://admin.yuansheng.com',
     container: '#mainView',
-    activeRule: '/wechat',
+    activeRule: '/app',
     loader,
   },
   {

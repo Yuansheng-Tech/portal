@@ -6,6 +6,7 @@
     "dev": "node ./server/server.js",
     "build": "next build",
     "start": "NODE_ENV=production node ./server/server.js",
+    "pm2:dev": "pm2 start npm --name 'youpin-portal' -- run dev",
     "lint": "next lint",
     "prepare": "husky install",
     "precommit": "lint-staged"
@@ -16,8 +17,10 @@
     "@koa/router": "^10.1.1",
     "@mui/icons-material": "^5.4.2",
     "@mui/material": "^5.4.3",
+    "dayjs": "^1.10.7",
     "http-proxy": "^1.18.1",
     "isomorphic-unfetch": "^3.1.0",
+    "justified-layout": "^4.1.0",
     "koa": "^2.13.4",
     "lodash": "^4.17.21",
     "next": "12.0.7",
@@ -26,6 +29,7 @@
     "query-string": "^7.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-justified-layout": "^0.1.0",
     "sass": "^1.45.1",
     "stream-array": "^1.1.2",
     "swr": "^1.1.2"

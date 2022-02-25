@@ -1,20 +1,21 @@
-import Image from 'next/image'
+import dayjs from 'dayjs'
 import styles from './card.module.scss'
 
 export default function({
-  children
+  data,
+  children = null
 }) {
   return (<div className={styles.card_two}>
-    <img
-      src="https://admin.yuanshengyoupin.com/logo.png"
-      alt=""
+    {data.banner && <img
+      src={data.banner || ''}
+      alt={data.name}
       width="100%"
       height="100%"
       className={styles.card_two_img}
-    />
+    />}
     <div className={styles.card_two_desc}>
-      <div className={styles.card_two_title}>title</div>
-      <div className={styles.card_two_time}>time</div>
+      <div className={styles.card_two_title}>{data.name}</div>
+      <div className={styles.card_two_time}>{dayjs(data.updated_time).format('YYYY.MM.DD')}</div>
     </div>
   </div>);
 }

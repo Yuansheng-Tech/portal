@@ -2,7 +2,10 @@ import fetch from 'isomorphic-unfetch';
 import { omitBy } from 'lodash';
 import qs from 'query-string';
 
+import { baseApi } from './base';
+
 import { AnyMap } from '../types/common';
+
 
 export enum EHttpMethods {
   GET = 'GET',
@@ -69,7 +72,7 @@ class Http implements IHttpInterface {
     );
 
     abortController && (opts.signal = abortController.signal);
-
+    url = /^(http|\/\/)/.test(url) ? url : `${baseApi}${url}`;
     if (opts && opts.query) {
       url += `${url.includes('?') ? '&' : '?'}${qs.stringify(omitBy(opts.query, omitFilter))}`;
     }
