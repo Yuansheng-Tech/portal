@@ -3,19 +3,23 @@ import Image from 'next/image';
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
+import _groupby from 'lodash.groupby'
+
+import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import Settings from '@mui/icons-material/Settings'
+import Logout from '@mui/icons-material/Logout'
 
 import { logout } from '../../api/auth'
 
 import styles from './nav.header.module.scss'
 
 import { navData } from './nav.header.data'
+
+import useFetchData from '../common/hooks/useFetchData';
 
 export default function({
   children
@@ -35,6 +39,23 @@ export default function({
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
+  const { data = {}, loading, error } = useFetchData(`/app/page/configs`, {
+    query: {
+      where: JSON.stringify({
+        position: 'top'
+      })
+    }
+  });
+  const { data: resuldData = [] } = data;
+  let stashData = {}
+  if (!resuldData.length) {
+    return null;
+  } else {
+    stashData = _groupby(resuldData, v => !v.parent.trim() ? 'parent' : v.parent)
+  }
+  console.log('data, loading, error', data, loading, error, _groupby(resuldData, v => !v.parent.trim() ? 'parent' : v.parent));
+
   return (<div className={styles.nav_header}>
     <a href="/" className={styles.nav_header_a}>
       <Image
@@ -46,7 +67,7 @@ export default function({
       />
     </a>
     <div className={styles.navs}>
-      {navData.map((v, k) => {
+      {stashData['parent'].sort().map((v, k) => {
         return <div className={styles.nav_item} key={k}>
           <div className={styles.nav_item_title}>
             {/\.png$/.test(v.icon) ? <img
@@ -58,11 +79,11 @@ export default function({
             /> : <svg className="icon" aria-hidden="true">
                 <use xlinkHref={"#"+v.icon}></use>
             </svg>}
-            <div className={styles.nav_item_title}>{v.title}</div>
+            <div className={styles.nav_item_title}>{v.name}</div>
           </div>
           <div className={styles.nav_item_child}>
-            {v.children.map((val, key) => {
-              return <a className={styles.nav_item_child_title} key={key}>{val.title}</a>
+            {stashData[v.id].sort().map((val, key) => {
+              return <a href={val.url} className={styles.nav_item_child_title} key={key}>{val.name}</a>
             })}
           </div>
         </div>
