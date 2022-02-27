@@ -1,10 +1,19 @@
 # Nextjs and Qiankun 实现官网
 
+### 项目框架
 - [nextjs](https://nextjs.org/)
 - [qiankun](https://qiankun.umijs.org/)
 - [swr](https://swr.vercel.app/zh-CN)
 
 - [iconfont](https://www.iconfont.cn/)
+
+### 项目功能预览
+
+![](./public/edit_page.png)
+
+![](./public/edit_nav.png)
+
+![](./public/edit_article.png)
 
 ## 启动
 
