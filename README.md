@@ -9,10 +9,17 @@
 
 ### 项目功能预览
 
+首页编辑
 ![](./public/edit_page.png)
 
+
+富文本页编辑
+![](./public/article_edit.png)
+
+导航配置页面
 ![](./public/edit_nav.png)
 
+富文本配置页面
 ![](./public/edit_article.png)
 
 ## 启动
