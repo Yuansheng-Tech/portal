@@ -1,11 +1,13 @@
-import fetch from 'isomorphic-unfetch';
-import { omitBy } from 'lodash';
-import qs from 'query-string';
 
-import { baseApi } from './base';
+import useSWR from 'swr'
+import { AnyMap, IfallbackMap } from '@/types/common'
+import { baseApi, isFetcherLock } from './base'
 
-import { AnyMap } from '../types/common';
-
+export interface ResponseData<T = unknown> {
+  statusCode: number;
+  data: T;
+  message: string;
+}
 
 export enum EHttpMethods {
   GET = 'GET',
@@ -15,19 +17,10 @@ export enum EHttpMethods {
   DELETE = 'DELETE',
 }
 
-function omitFilter(a: unknown) {
-  return a === '' || a === null || a === undefined;
-}
-
-export interface ResponseData<T = unknown> {
-  code: number;
-  data: T;
-  message: string;
-}
 export interface RequestOptions {
   headers?: HeadersInit;
   signal?: AbortSignal;
-  method?: EHttpMethods;
+  method?: 'GET' | 'POST' | 'PATCH' | 'DELETE' | 'PUT';// EHttpMethods;
   query?: AnyMap;
   data?: AnyMap;
   body?: string;
@@ -35,80 +28,26 @@ export interface RequestOptions {
   credentials?: 'include' | 'same-origin';
   mode?: 'cors' | 'same-origin';
   cache?: 'no-cache' | 'default' | 'force-cache';
+
+  fallbackData?: IfallbackMap
 }
 
-/**
- * Http request
- * @param url request URL
- * @param options request options
- */
-interface IHttpInterface {
-  request<T = ResponseData>(url: string, options?: RequestOptions): Promise<T | undefined>;
+export default async function fetcher(url: string, options?: RequestOptions, ...args: any[]): Promise<ResponseData>{
+  const res = await fetch(baseApi + url, options)
+  const result = await res.json()
+  return result.data
 }
 
-const CAN_SEND_METHOD = ['POST', 'PUT', 'PATCH', 'DELETE'];
+type IArgs = [string, ...(string|object)[]];
 
-class Http implements IHttpInterface {
-  public async request<T>(
-    url: string,
-    options?: RequestOptions,
-    abortController?: AbortController
-  ): Promise<T | undefined> {
-    const opts: RequestOptions = Object.assign(
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          Accept: 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-          'X-Api-Key': `APIKey ${localStorage.getItem('apiKey')}`
-        },
-        credentials: 'include',
-        timeout: 10000,
-        mode: 'cors',
-        cache: 'no-cache',
-      },
-      options
-    );
-
-    abortController && (opts.signal = abortController.signal);
-    url = /^(http|\/\/)/.test(url) ? url : `${baseApi}${url}`;
-    if (opts && opts.query) {
-      url += `${url.includes('?') ? '&' : '?'}${qs.stringify(omitBy(opts.query, omitFilter))}`;
-    }
-
-    const canSend = opts && opts.method && CAN_SEND_METHOD.includes(opts.method);
-
-    if (canSend && opts.data) {
-      opts.body = JSON.stringify(omitBy(opts.data, omitFilter));
-      opts.headers && Reflect.set(opts.headers, 'Content-Type', 'application/json');
-    }
-
-    try {
-      const res = await Promise.race([
-        fetch(url, opts),
-        new Promise<Response>((_, reject) => {
-          setTimeout(() => {
-            return reject({
-              message: '请求超时，请稍后重试',
-              url,
-            });
-          }, opts.timeout);
-        }),
-      ]);
-      const result = await res.json();
-      if (res.status !== 200) {
-        throw new Error(result?.message || '服务器内部错误');
-      }
-      return result;
-    } catch (e) {
-      typeof window !== 'undefined' && console.error({ content: (e as Error).message });
-      // throw to swr
-      throw e;
+export function useFetcher(url: string, options?: RequestOptions = {}, ...args: any[]) {
+  const { fallbackData } = options || {}
+  if (isFetcherLock) {
+    return {
+      data: fallbackData,
+      error: null
     }
   }
+  //@ts-ignore
+  return useSWR(url, options, ...args)
 }
-
-const { request } = new Http();
-
-export { request as default };

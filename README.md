@@ -1,5 +1,11 @@
 # Nextjs and Qiankun 实现官网
 
+- [nextjs](https://nextjs.org/)
+- [qiankun](https://qiankun.umijs.org/)
+- [swr](https://swr.vercel.app/zh-CN)
+
+- [iconfont](https://www.iconfont.cn/)
+
 ## 启动
 
 ### Install VSCode plugins

@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { IPageConfigData } from '@/types/common';
+
 import CardOne from './card.one';
 import CardTwo from './card.two';
 import CardThree from './card.three';
@@ -11,8 +13,8 @@ export const mapWidth = [
   [1,1,1,1]
 ]
 
-export const mapSpaceForDataLength = (len) => {
-  let arr = [];
+export const mapSpaceForDataLength = (len: number): number[] => {
+  let arr: number[] = [];
   while (arr.length < len) {
     const roundNum = Math.round(Math.random() * 4) % 4;
     arr = arr.concat(mapWidth[roundNum])
@@ -24,7 +26,7 @@ const spaceData = mapSpaceForDataLength(30);
 
 export const renderMap = (resuldData = []) => {
   return <>
-    {resuldData.map((val, key) => {
+    {resuldData.map((val: IPageConfigData, key: number) => {
       return <>
         {(spaceData[key % 30] === 2) && <Link key={key} href={`/p/${val.id}`}><a><CardOne data={val} /></a></Link>}
         {(spaceData[key % 30] === 1) && (() => {

@@ -1,9 +1,11 @@
 import dayjs from 'dayjs'
+import { IPageConfigData } from '@/types/common';
 import styles from './card.module.scss'
 
 export default function({
-  data,
-  children = null
+  data
+}: { 
+  data: IPageConfigData
 }) {
   return (<div className={styles.card_three}>
     {data.banner && <img

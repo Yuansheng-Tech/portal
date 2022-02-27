@@ -1,4 +1,4 @@
-import request, { EHttpMethods } from '../../api/fetcher';
+import request, { EHttpMethods } from '@/api/fetcher';
 import { AnyMap } from '../../types/common';
 import {
   RadonDBAppId,
@@ -66,7 +66,7 @@ export function deploy<T = unknown>(props: Props<T>) {
   const { setLoading, setDeployResult } = props;
   setLoading && setLoading(true);
   request('/papis/radondb.com/v1/namespaces/default/manifests', { method: EHttpMethods.POST, data: manifest })
-    .then((data) => {
+    .then((data: any) => {
       setDeployResult && setDeployResult(data as T);
       setLoading && setLoading(false);
     })

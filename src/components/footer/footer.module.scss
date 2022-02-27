@@ -17,15 +17,19 @@
 
 /* .footer_desc, */
 .footer_logo {
+  position: relative;
+  display: inline-block;
   font-size: 24px;
 }
 .footer_main {
   display: flex;
 }
 .footer_portal {
+  position: relative;
   flex: 2;
 }
 .footer_icp {
+  position: relative;
   flex: 3;
 }
 .footer_icp a {
@@ -36,12 +40,13 @@
   text-decoration: none;
 }
 .footer_follow_us {
+  position: relative;
   flex: 2;
 }
 .footer_follow_us a {
   padding-right: 10px;
   margin-right: 10px;
-  border-right: 1px solid #eee;
+  // border-right: 1px solid #eee;
 }
 .footer_follow_us a:hover {
   color: #aaa;

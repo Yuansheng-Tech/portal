@@ -1,13 +1,28 @@
 import Router from 'next/router';
-import request from './fetcher';
-import { baseApi } from './base';
+import useSWR from 'swr';
+import fetcher from './fetcher';
+import { baseApi, logoutApi } from './base';
 
 export const logout = async () => {
-  const apiKey = localStorage.getItem('apiKey') || '';
-  await request(`${baseApi}/admin/logout`, {
-    method: 'POST',
-  });
-  localStorage.clear();
-  localStorage.setItem('apiKey', apiKey);
-  Router.push('/');
+  if (typeof window !== 'undefined') {
+    const apiKey = window.localStorage.getItem('apiKey') || '';
+    await fetcher(logoutApi, {
+      method: "POST"
+    });
+    window.localStorage.clear();
+    window.localStorage.setItem('apiKey', apiKey);
+    Router.push('/');
+  }
+  return
+}
+
+// demo
+function useUser(id: string) {
+  const { data, error } = useSWR(`/api/user/${id}`)
+
+  return {
+    user: data,
+    isLoading: !error && !data,
+    isError: error,
+  }
 }
