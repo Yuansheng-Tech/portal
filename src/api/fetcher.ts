@@ -1,6 +1,6 @@
 
 import useSWR from 'swr'
-import { AnyMap, IfallbackMap } from '@/types/common'
+import { AnyMap, IPageConfigData } from '@/types/common'
 import { baseApi, isFetcherLock } from './base'
 
 export interface ResponseData<T = unknown> {
@@ -29,18 +29,16 @@ export interface RequestOptions {
   mode?: 'cors' | 'same-origin';
   cache?: 'no-cache' | 'default' | 'force-cache';
 
-  fallbackData?: IfallbackMap
+  fallbackData?: IPageConfigData[]
 }
 
-export default async function fetcher(url: string, options?: RequestOptions, ...args: any[]): Promise<ResponseData>{
+export default async function fetcher(url: string, options?: RequestOptions): Promise<ResponseData>{
   const res = await fetch(baseApi + url, options)
   const result = await res.json()
   return result.data
 }
 
-type IArgs = [string, ...(string|object)[]];
-
-export function useFetcher(url: string, options?: RequestOptions = {}, ...args: any[]) {
+export function useFetcher(url: string, options?: RequestOptions, ...args: any[]) {
   const { fallbackData } = options || {}
   if (isFetcherLock) {
     return {

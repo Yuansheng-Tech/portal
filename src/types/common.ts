@@ -22,5 +22,4 @@ export interface IfallbackMap {
  
 export interface IfallbackOptions {
   fallback: IfallbackMap;
-  id?: string;
 }

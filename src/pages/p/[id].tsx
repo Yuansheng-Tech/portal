@@ -11,7 +11,7 @@ import { Edit } from '@/components/common/edit';
 import styles from './p.module.scss';
 import { IfallbackOptions } from '@/types/common';
 
-export default function Article({ id, fallback }: IfallbackOptions) {
+export default function Article({ id, fallback }: IfallbackOptions & { id: string }) {
   if (!id) {
     return null
   }
