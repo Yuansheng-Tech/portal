@@ -25,10 +25,10 @@ export default function Footer({
           {slogen.desc}
         </div>
         <div className={styles.footer_main}>
-          <p className={styles.footer_portal}>
+          {slogen.name && <p className={styles.footer_portal}>
             <Edit filter="logo_slogen" />
             ©2022 {slogen.name} {slogen.action}
-          </p>
+          </p>}
           <p className={styles.footer_icp}>
             <Edit filter="logo_slogen" />
             {footerGovLinkData.map((v: IPageConfigData, k: number) => (<><a key={k} target="_blank" className="normal" href={v.action}>{v.name}</a><br /></>))}
