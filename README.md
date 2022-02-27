@@ -9,11 +9,13 @@
 
 ### 项目功能预览
 
-首页编辑
+首页展示
+![](./public/index.png)
+
+首页可编辑
 ![](./public/edit_page.png)
 
-
-富文本页编辑
+富文本页可编辑
 ![](./public/article_edit.png)
 
 导航配置页面
