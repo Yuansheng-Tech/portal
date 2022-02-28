@@ -20,7 +20,7 @@ export default function Article({ id, fallback }: IfallbackOptions & { id: strin
       <Head>
         <title>{resuldData.name}</title>
       </Head>
-      <main className="container mx-auto px-2 mt-16 md:mt-40 md:px-20 relative">
+      <main className="container max-w-screen-lg mx-auto px-2 mt-16 md:mt-40 md:px-20 relative">
         <Edit url={`/app/pages/${resuldData.id}`} />
         <h2 className="text-2xl">{resuldData.name}</h2>
         {resuldData.updated_time && <div className="mt-4 mb-10">{dayjs(resuldData.updated_time).format('YYYY.MM.DD')}</div>}

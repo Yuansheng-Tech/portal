@@ -88,7 +88,7 @@ export default function Nav({
           <span className="hidden hover-display-parent fixed top-14 right-3 text-2xl w-10 h-10 z-50">x</span>
           <div className="hidden bg-white z-30 fixed md:absolute top-12 md:top-auto bottom-20 md:bottom-auto w-screen inset-x-0 border-t border-b border-gray-300 bg-white">
             {(stashData[v.id] || []).sort((a: IPageConfigData, b: IPageConfigData) => a.sort - b.sort).map((val: IPageConfigData, key: number) => {
-              return <a className="border-b border-gray-300 p-3 block md:inline-block text-black hover:text-green-700 leading-10 md:leading-15 text-xl" href={val.action || '#'} key={key}>{val.name}</a>
+              return <a className="border-b border-gray-300 p-4 block md:inline-block text-black hover:text-green-700 leading-10 md:leading-15 text-xl" href={val.action || '#'} key={key}>{val.name}</a>
             })}
           </div>
         </div>
