@@ -1,5 +1,5 @@
 import fetcher from './fetcher';
-import { appId } from './base';
+import { appId, indexPageId } from './base';
 
 export const pageAPI = `/api/app/pages/`
 export const getPageData = async (id: string | string[] | undefined) => {
@@ -9,6 +9,9 @@ export const getPageData = async (id: string | string[] | undefined) => {
 export const headerDataApi = `/api/app/page/configs?where=${JSON.stringify({
   "position":"top",
   "status": 1,
+  "page": {
+    id: indexPageId
+  }
 })}`
 export const getHeaderData = async () => {
   return await fetcher(headerDataApi);
@@ -17,6 +20,9 @@ export const getHeaderData = async () => {
 export const headerUserDataApi = `/api/app/page/configs?where=${JSON.stringify({
   "position":"user_profile",
   "status": 1,
+  "page": {
+    id: indexPageId
+  }
 })}`
 export const getHeaderUserData = async () => {
   return await fetcher(headerUserDataApi);
@@ -25,6 +31,9 @@ export const getHeaderUserData = async () => {
 export const rightSideDataApi = `/api/app/page/configs?where=${JSON.stringify({
   "position": "right_side",
   "status": 1,
+  "page": {
+    id: indexPageId
+  }
 })}`
 export const getRightSideData = async () => {
   return await fetcher(rightSideDataApi);
@@ -35,7 +44,7 @@ export const indexDataApi = `/api/app/pages?where=${JSON.stringify({
     id: appId,
   },
   type: 'richtext',
-  "status": 1,
+  "status": 1
 })}`
 export const getIndexData = async () => {
   return await fetcher(indexDataApi);
@@ -44,6 +53,9 @@ export const getIndexData = async () => {
 export const footerLinkApi = `/api/app/page/configs?where=${JSON.stringify({
   "position":"bottom",
   "status": 1,
+  "page": {
+    id: indexPageId
+  }
 })}`
 export const getFooterLinkData = async () => {
   return await fetcher(footerLinkApi);
@@ -52,6 +64,9 @@ export const getFooterLinkData = async () => {
 export const footerGovLinkApi = `/api/app/page/configs?where=${JSON.stringify({
   "position":"footer_gov_link",
   "status": 1,
+  "page": {
+    id: indexPageId
+  }
 })}`
 export const getFooterGovLinkData = async () => {
   return await fetcher(footerGovLinkApi);
@@ -60,6 +75,9 @@ export const getFooterGovLinkData = async () => {
 export const logoApi = `/api/app/page/configs?where=${JSON.stringify({
   "position":"logo_slogen",
   "status": 1,
+  "page": {
+    id: indexPageId
+  }
 })}`
 export const getLogoData = async () => {
   return await fetcher(logoApi);

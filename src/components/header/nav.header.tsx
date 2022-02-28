@@ -56,10 +56,10 @@ export default function Nav({
     stashData = _groupby(resuldData, v => !v.parent.trim() ? 'parent' : v.parent)
   }
   return (<div className="border-b border-gray-200 md:border-none px-2 sm:px-10 fixed inset-x-0 top-0 z-50 bg-white">
-    <div className="container mx-auto h-12 sm:h-28 flex flex-row justify-center items-center text-center">
+    <div className="container relative mx-auto h-12 sm:h-28 flex flex-row justify-center items-center text-center">
     <Link href="/">
       <a className="relative sm:block sm:flex-1">
-      <Edit filter="logo_slogen" />
+        <Edit filter="logo_slogen" />
       {logoAndSlogenData[0].logo && <Image
         className="flex-1 place-self-center"
         src={logoAndSlogenData[0].logo}
