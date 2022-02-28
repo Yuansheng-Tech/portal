@@ -15,6 +15,17 @@
   }
 }
 
+.hover-display-parent {
+  &:hover {
+    &.hidden {
+      display: none;
+    }
+    &+.hidden {
+      display: none;
+    }
+  }
+}
+
 .leading-15 {
   line-height: 4rem;
 }

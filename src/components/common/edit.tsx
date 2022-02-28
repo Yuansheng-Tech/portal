@@ -25,7 +25,7 @@ export const Edit = ({
   const { query: { edit } = {} } = router
   if (edit) {
     const hrefUrl = getUrls(url, filter)
-    return <a href={hrefUrl} target="_blank">编辑</a>
+    return <a className="absolute top-0 left-0 bg-gray-200 p-1 text-xl text-black z-50" href={hrefUrl} target="_blank">编辑</a>
   }
   return null
 }

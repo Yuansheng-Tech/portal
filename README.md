@@ -4,6 +4,7 @@
 - [nextjs](https://nextjs.org/)
 - [qiankun](https://qiankun.umijs.org/)
 - [swr](https://swr.vercel.app/zh-CN)
+- [tailwindcss](https://www.tailwindcss.cn/docs)
 
 - [iconfont](https://www.iconfont.cn/)
 

@@ -13,10 +13,11 @@ export default function NavSide({
   })
   if (!resuldData.length) return null
   
-  return (<div className="fixed right-0 top-30 z-50">
-      <Edit filter="right_side" />
+  return (<div className="hidden md:flex fixed flex-row md:flex-col top-0 left-0 right-0 md:left-auto m-0 md:mt-32 z-40">
+      <div className="relative">
+        <Edit filter="right_side" />
       {resuldData.map((v: IPageConfigData, k: number) => {
-        return <div key={k} className="relative hover-display">
+        return <div key={k} className="relative hover-display flex-1">
           <div className="p-2 text-center bg-gray-50 hover:bg-green-300 cursor-pointer">
             <Image
               src={v.icon}
@@ -26,7 +27,7 @@ export default function NavSide({
             />
             <div>{v.name}</div>
           </div>
-          <div className="hidden absolute w-40 top-0 right-20 bg-white">
+          <div className="hidden absolute w-40 top-20 md:top-0 md:right-20 bg-white">
           {(() => {
             switch(v.action_type) {
               case 'qrcode':
@@ -39,5 +40,6 @@ export default function NavSide({
           </div>
         </div>
       })}
+    </div>
   </div>)
 }

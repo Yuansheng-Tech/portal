@@ -25,18 +25,18 @@ export const mapSpaceForDataLength = (len: number): number[] => {
 const spaceData = mapSpaceForDataLength(30);
 
 export const renderMap = (resuldData = []) => {
-  return <div className="grid grid-cols-4 gap-4 mt-20">
+  return <div className="grid grid-cols-1 md:grid-cols-4 gap-0 md:gap-4">
     {resuldData.map((val: IPageConfigData, key: number) => {
       return <>
         {(spaceData[key % 30] === 2) && <Link key={val.id} href={`/p/${val.id}`}>
-            <a className="col-span-2 h-96 border border-gray-50"><CardOne data={val} /></a></Link>}
+            <a className="col-span-1 my-4 md:my-0 md:col-span-2 h-96 border border-gray-50"><CardOne data={val} /></a></Link>}
         {(spaceData[key % 30] === 1) && (() => {
             const num = Math.round(Math.random() * 2) % 2 + 2;
             return <>
               {num === 2 && <Link key={val.id} href={`/p/${val.id}`}>
-                <a className="col-span-1 h-96 border border-gray-50"><CardTwo data={val} /></a></Link>}
+                <a className="col-span-1 my-4 md:my-0 h-96 border border-gray-50"><CardTwo data={val} /></a></Link>}
               {num === 3 && <Link key={val.id} href={`/p/${val.id}`}>
-                <a className="col-span-1 h-96 border border-gray-50"><CardTwo data={val} /></a></Link>}
+                <a className="col-span-1 my-4 md:my-0 h-96 border border-gray-50"><CardTwo data={val} /></a></Link>}
             </>
         })()}
       </>

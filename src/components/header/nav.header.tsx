@@ -55,8 +55,9 @@ export default function Nav({
   } else {
     stashData = _groupby(resuldData, v => !v.parent.trim() ? 'parent' : v.parent)
   }
-  return (<div className="container mx-auto px-20 flex flex-row h-28 justify-center items-center text-center">
-    <a href="/" className="flex-1">
+  return (<div className="container mx-auto px-0 fixed inset-x-0 bottom-0 sm:top-0 z-50 bg-white sm:px-10 h-20 sm:h-28 flex flex-row justify-center items-center text-center">
+    <Link href="/">
+      <a className="hidden relative sm:block sm:flex-1">
       <Edit filter="logo_slogen" />
       {logoAndSlogenData[0].logo && <Image
         className="flex-1 place-self-center"
@@ -65,8 +66,8 @@ export default function Nav({
         width="62px"
         height="62px"
       />}
-    </a>
-    <div className="contents">
+    </a></Link>
+    <div className="contents relative">
       <Edit filter="top" />
       {(stashData['parent'] || []).sort((a: IPageConfigData, b: IPageConfigData) => a.sort - b.sort).map((v: IPageConfigData, k: number) => {
         return <div key={k} className="flex-1 hover-display">
@@ -82,15 +83,16 @@ export default function Nav({
             </svg>}
             <div>{v.name}</div>
           </div>
-          <div className="hidden z-40 absolute w-screen inset-x-0 border-t border-b border-gray-300 bg-white">
+          <span className="hidden hover-display-parent fixed top-2 right-3 text-2xl w-10 h-10 z-50">x</span>
+          <div className="hidden z-40 fixed md:absolute top-0 md:top-auto bottom-20 md:bottom-auto w-screen inset-x-0 border-t border-b border-gray-300 bg-white">
             {(stashData[v.id] || []).sort((a: IPageConfigData, b: IPageConfigData) => a.sort - b.sort).map((val: IPageConfigData, key: number) => {
-              return <a className="p-3 text-black hover:text-green-700 leading-15 text-xl" href={val.action || '#'} key={key}>{val.name}</a>
+              return <a className="p-3 block md:inline-block text-black hover:text-green-700 leading-15 text-xl" href={val.action || '#'} key={key}>{val.name}</a>
             })}
           </div>
         </div>
       })}
     </div>
-    <div className="flex-1">
+    <div className="hidden relative sm:block lg:flex-1">
       <Edit filter="user_profile" />
       {username ? <><Button
         className="w-full"
