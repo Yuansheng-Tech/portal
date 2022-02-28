@@ -1,7 +1,7 @@
 import { AppMetadata } from 'qiankun';
 import { useState, useEffect } from 'react';
 
-import { Microconfig } from '../../micro/registerMicroAppsConfig';
+import { Microconfig } from '@/micro/registerMicroAppsConfig';
 
 interface Props {
   children?: JSX.Element | JSX.Element[];

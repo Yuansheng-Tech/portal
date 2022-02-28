@@ -18,9 +18,6 @@ import { headerDataApi, headerUserDataApi, logoApi } from '@/api/data';
 import { Edit } from '@/components/common/edit';
 import { IPageConfigData, IfallbackOptions } from '@/types/common';
 
-import styles from './nav.header.module.scss';
-
-
 export default function Nav({
   fallback
 }: IfallbackOptions) {
@@ -58,44 +55,45 @@ export default function Nav({
   } else {
     stashData = _groupby(resuldData, v => !v.parent.trim() ? 'parent' : v.parent)
   }
-  return (<div className={styles.nav_header}>
-    <a href="/" className={styles.nav_header_a}>
+  return (<div className="container mx-auto px-20 flex flex-row h-28 justify-center items-center text-center">
+    <a href="/" className="flex-1">
       <Edit filter="logo_slogen" />
       {logoAndSlogenData[0].logo && <Image
-        className={styles.nav_header_logo}
+        className="flex-1 place-self-center"
         src={logoAndSlogenData[0].logo}
         alt="logo"
         width="62px"
         height="62px"
       />}
     </a>
-    <div className={styles.navs}>
+    <div className="contents">
       <Edit filter="top" />
       {(stashData['parent'] || []).sort((a: IPageConfigData, b: IPageConfigData) => a.sort - b.sort).map((v: IPageConfigData, k: number) => {
-        return <div className={styles.nav_item} key={k}>
-          <div className={styles.nav_item_title}>
+        return <div key={k} className="flex-1 hover-display">
+          <div className="text-center">
             {/\.png$/.test(v.icon) ? <img
-              className={styles.nav_item_icon}
+              className="inline-block"
               src={v.icon}
               alt="logo"
               width="36px"
               height="36px"
-            /> : <svg className="icon" aria-hidden="true">
+            /> : <svg className="inline-block icon" aria-hidden="true">
               <use xlinkHref={"#" + v.icon}></use>
             </svg>}
-            <div className={styles.nav_item_title}>{v.name}</div>
+            <div>{v.name}</div>
           </div>
-          <div className={styles.nav_item_child}>
+          <div className="hidden z-40 absolute w-screen inset-x-0 border-t border-b border-gray-300 bg-white">
             {(stashData[v.id] || []).sort((a: IPageConfigData, b: IPageConfigData) => a.sort - b.sort).map((val: IPageConfigData, key: number) => {
-              return <a href={val.action || '#'} className={styles.nav_item_child_title} key={key}>{val.name}</a>
+              return <a className="p-3 text-black hover:text-green-700 leading-15 text-xl" href={val.action || '#'} key={key}>{val.name}</a>
             })}
           </div>
         </div>
       })}
     </div>
-    <div className={styles.navs_user}>
+    <div className="flex-1">
       <Edit filter="user_profile" />
       {username ? <><Button
+        className="w-full"
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
@@ -114,35 +112,35 @@ export default function Nav({
           }}
         >
           {resuldUserData.map((v: IPageConfigData, k: number) => {
-            return <MenuItem key={k} onClick={(e) => router.push(v.action)} className={styles.portal_menu_item}>
-              <ListItemIcon className={styles.portal_menu_icon}>
+            return <MenuItem className="portal_menu_item" key={k} onClick={(e) => router.push(v.action)}>
+              <ListItemIcon className="portal_menu_icon">
                 {v.action === '/apps' && <Settings fontSize="small" />}
                 {v.action === '/logout' && <Logout fontSize="small" />}
               </ListItemIcon>
               {v.name}
             </MenuItem>
           })}
-          {/* <MenuItem onClick={(e) => router.push('/apps')} className={styles.portal_menu_item}>
-          <ListItemIcon className={styles.portal_menu_icon}>
+          {/* <MenuItem onClick={(e) => router.push('/apps')}>
+          <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           应用列表
         </MenuItem> */}
-          {/* <MenuItem onClick={handleClose} className={styles.portal_menu_item}>
-          <ListItemIcon className={styles.portal_menu_icon}>
+          {/* <MenuItem onClick={handleClose}>
+          <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           <span>我的账号</span>
         </MenuItem> */}
-          {/* <MenuItem onClick={logout} className={styles.portal_menu_item}>
-          <ListItemIcon className={styles.portal_menu_icon}>
+          {/* <MenuItem onClick={logout}>
+          <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
           退出
         </MenuItem> */}
         </Menu></> : <>
-        <Link href="/login"><a className={styles.nav_item_login}>登录</a></Link>
-        <Link href="/register"><a className={styles.nav_item_register}>注册</a></Link>
+        <Link href="/login"><a className="text-green-700 hover:text-gray-700 hover:border hover:border-green-700 p-4">登录</a></Link>
+        <Link href="/register"><a className="hover:text-green-700 hover:border-green-700 p-4 border border-gray-300">注册</a></Link>
       </>}
     </div>
   </div>)

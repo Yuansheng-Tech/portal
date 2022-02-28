@@ -16,7 +16,7 @@ export default function Home({ fallback }: IfallbackOptions) {
         <title>{logoData[0]?.name} - {logoData[0]?.desc}</title>
       </Head>
 
-      <main>
+      <main className="container mx-auto px-20">
         <Edit url="/app/pages" />
         {renderMap(resuldData)}
       </main>

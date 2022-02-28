@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import { SWRConfig } from 'swr';
 
 import MainView from '@/components/layout/MainView';
-import NavHeader from '@/components/nav/nav.header';
+import NavHeader from '@/components/header/nav.header';
 import NavSide from '@/components/nav/nav.side';
 import Footer from '@/components/footer/footer';
 import fetcher from '@/api/fetcher';

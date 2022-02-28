@@ -1,7 +1,5 @@
 import { useRouter } from 'next/router'
-import { appId } from '@/api/base';
-
-import styles from './edit.module.scss'
+import { appId } from '@/api/base'
 
 const getUrls = (url: string, filter: string): string => {
   switch (url) {
@@ -27,7 +25,7 @@ export const Edit = ({
   const { query: { edit } = {} } = router
   if (edit) {
     const hrefUrl = getUrls(url, filter)
-    return <a href={hrefUrl} target="_blank" className={styles.edit_wrapper_btn}>编辑</a>
+    return <a href={hrefUrl} target="_blank">编辑</a>
   }
   return null
 }

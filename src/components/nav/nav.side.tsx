@@ -5,8 +5,6 @@ import { useFetcher } from "@/api/fetcher";
 import { Edit } from '@/components/common/edit';
 import { IPageConfigData, IfallbackOptions } from '@/types/common';
 
-import styles from './nav.side.module.scss';
-
 export default function NavSide({
   fallback
 }: IfallbackOptions) {
@@ -15,29 +13,30 @@ export default function NavSide({
   })
   if (!resuldData.length) return null
   
-  return (<div className={styles.nav_side}>
+  return (<div className="fixed right-0 top-30 z-50">
       <Edit filter="right_side" />
       {resuldData.map((v: IPageConfigData, k: number) => {
-        return <div className={styles.nav_item} key={k}>
-          <div className={styles.nav_item_title}>
+        return <div key={k} className="relative hover-display">
+          <div className="p-2 text-center bg-gray-50 hover:bg-green-300 cursor-pointer">
             <Image
-              className={styles.nav_item_icon}
               src={v.icon}
               alt="logo"
               width="28px"
               height="28px"
             />
-            <div className={styles.nav_item_title}>{v.name}</div>
+            <div>{v.name}</div>
           </div>
+          <div className="hidden absolute w-40 top-0 right-20 bg-white">
           {(() => {
             switch(v.action_type) {
               case 'qrcode':
-                return <img src={v.action} className={styles.nav_item_hover_img} />;
+                return <img src={v.action} />;
                 break;
               case 'phone':
-                return <div className={styles.nav_item_hover_img}>{v.action}</div>;
+                return <div>{v.action}</div>;
             }
           })()}
+          </div>
         </div>
       })}
   </div>)

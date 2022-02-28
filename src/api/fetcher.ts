@@ -46,6 +46,6 @@ export function useFetcher(url: string, options?: RequestOptions, ...args: any[]
       error: null
     }
   }
-  //@ts-ignore
+  // @ts-ignore
   return useSWR(url, options, ...args)
 }
