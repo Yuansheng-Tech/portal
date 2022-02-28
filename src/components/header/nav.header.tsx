@@ -55,9 +55,10 @@ export default function Nav({
   } else {
     stashData = _groupby(resuldData, v => !v.parent.trim() ? 'parent' : v.parent)
   }
-  return (<div className="container mx-auto px-0 fixed inset-x-0 bottom-0 sm:top-0 z-50 bg-white sm:px-10 h-20 sm:h-28 flex flex-row justify-center items-center text-center">
+  return (<div className="border-b border-gray-200 md:border-none px-2 sm:px-10 fixed inset-x-0 top-0 z-50 bg-white">
+    <div className="container mx-auto h-12 sm:h-28 flex flex-row justify-center items-center text-center">
     <Link href="/">
-      <a className="hidden relative sm:block sm:flex-1">
+      <a className="relative sm:block sm:flex-1">
       <Edit filter="logo_slogen" />
       {logoAndSlogenData[0].logo && <Image
         className="flex-1 place-self-center"
@@ -65,9 +66,10 @@ export default function Nav({
         alt="logo"
         width="62px"
         height="62px"
+        className="md:scale-100 scale-50"
       />}
     </a></Link>
-    <div className="contents relative">
+    <div className="fixed z-50 bg-white bottom-0 h-20 py-4 flex inset-x-0 bg-white sm:top-0 md:contents">
       <Edit filter="top" />
       {(stashData['parent'] || []).sort((a: IPageConfigData, b: IPageConfigData) => a.sort - b.sort).map((v: IPageConfigData, k: number) => {
         return <div key={k} className="flex-1 hover-display">
@@ -83,8 +85,8 @@ export default function Nav({
             </svg>}
             <div>{v.name}</div>
           </div>
-          <span className="hidden hover-display-parent fixed top-2 right-3 text-2xl w-10 h-10 z-50">x</span>
-          <div className="hidden z-40 fixed md:absolute top-0 md:top-auto bottom-20 md:bottom-auto w-screen inset-x-0 border-t border-b border-gray-300 bg-white">
+          <span className="hidden hover-display-parent fixed top-14 right-3 text-2xl w-10 h-10 z-50">x</span>
+          <div className="hidden bg-white z-30 fixed md:absolute top-12 md:top-auto bottom-20 md:bottom-auto w-screen inset-x-0 border-t border-b border-gray-300 bg-white">
             {(stashData[v.id] || []).sort((a: IPageConfigData, b: IPageConfigData) => a.sort - b.sort).map((val: IPageConfigData, key: number) => {
               return <a className="border-b border-gray-300 p-3 block md:inline-block text-black hover:text-green-700 leading-10 md:leading-15 text-xl" href={val.action || '#'} key={key}>{val.name}</a>
             })}
@@ -92,9 +94,9 @@ export default function Nav({
         </div>
       })}
     </div>
-    <div className="hidden relative sm:block lg:flex-1">
+    <div className="relative flex-1 sm:block text-right md:text-center">
       <Edit filter="user_profile" />
-      {username ? <><Button
+      {username ? <><Button 
         className="w-full"
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
@@ -141,9 +143,10 @@ export default function Nav({
           退出
         </MenuItem> */}
         </Menu></> : <>
-        <Link href="/login"><a className="text-green-700 hover:text-gray-700 hover:border hover:border-green-700 p-4">登录</a></Link>
-        <Link href="/register"><a className="hover:text-green-700 hover:border-green-700 p-4 border border-gray-300">注册</a></Link>
+        <Link href="/login"><a className="text-green-700 hover:text-gray-700 hover:border hover:border-green-700 p-3 md:p-4">登录</a></Link>
+        <Link href="/register"><a className="hover:text-green-700 hover:border-green-700 p-3 md:p-4 border border-gray-300">注册</a></Link>
       </>}
+    </div>
     </div>
   </div>)
 }
