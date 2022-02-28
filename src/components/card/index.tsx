@@ -14,7 +14,7 @@ export const mapWidth = [
 ]
 
 export const mapSpaceForDataLength = (len: number): number[] => {
-  let arr: number[] = [];
+  let arr: number[] = [1,2,1];
   while (arr.length < len) {
     const roundNum = Math.round(Math.random() * 4) % 4;
     arr = arr.concat(mapWidth[roundNum])

@@ -1,7 +1,7 @@
 import { logout } from '@/api/auth';
 import { getAllSideData } from '@/api/data';
 
-export default function() {
+export default function Logout() {
   logout();
   return null;
 }

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import { IPageConfigData } from '@/types/common';
 
-export default function({
+export default function Card({
   data
 }: { 
   data: IPageConfigData

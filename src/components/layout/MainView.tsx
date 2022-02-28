@@ -1,5 +1,5 @@
 import { AppMetadata } from 'qiankun';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Microconfig } from '@/micro/registerMicroAppsConfig';
 
@@ -15,7 +15,7 @@ export default function Main(props: Props) {
     qiankun.registerMicroApps(Microconfig, {
       // qiankun 生命周期钩子 - 微应用加载前
       beforeLoad: (app: AppMetadata) => {
-        console.log('before load', app, app.name);
+        console.log('before load', app, app.name, loading);
         return Promise.resolve();
       },
       // qiankun 生命周期钩子 - 微应用挂载后
