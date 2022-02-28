@@ -10,6 +10,8 @@
 
 ### 项目功能预览
 
+#### PC 端样式
+
 首页展示
 ![](./public/index.png)
 
@@ -25,3 +27,13 @@
 富文本配置页面
 ![](./public/edit_article.png)
 
+#### 移动端样式
+
+首页
+![](./public/index_page.png)
+
+导航
+![](./public/menu_m.png)
+
+新闻
+![](./public/news.png)

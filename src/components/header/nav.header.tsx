@@ -97,7 +97,7 @@ export default function Nav({
     <div className="relative flex-1 sm:block text-right md:text-center">
       <Edit filter="user_profile" />
       {username ? <><Button 
-        className="w-full"
+        className="w-84 md:q-full"
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"

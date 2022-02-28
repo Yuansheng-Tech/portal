@@ -16,7 +16,7 @@ export default function Footer({
   // const solgen = cache.get(logoApi) || [{}]
   const slogen = fallback[logoApi] ? fallback[logoApi][0] : {} as IPageConfigData
 
-  return (<div className="p-4 md:py-20 mb-20 md:mb-0 bg-green-900 text-white mt-10">
+  return (<div className="p-4 md:py-20 mb-20 md:mb-0 bg-green-700 text-white mt-10">
     <div className="container mx-auto">
         <div className="text-2xl leading-80 relative">
           <Edit filter="logo_slogen" />
