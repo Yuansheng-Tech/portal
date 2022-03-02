@@ -18,8 +18,8 @@ module.exports = {
     colors: {
       greeen: '#38653a',
       lightGreen: '#88dd93',
-      gray: colors.coolGray,
-      blue: colors.lightBlue,
+      gray: colors.gray,
+      blue: colors.sky,
       red: colors.rose,
       pink: colors.fuchsia,
     },
