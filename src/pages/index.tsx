@@ -13,7 +13,7 @@ export default function Home({ fallback }: IfallbackOptions) {
   return (
     <Layout>
       <Head>
-        <title>{logoData[0]?.name} - {logoData[0]?.desc}</title>
+        {logoData && <title>{logoData[0]?.name} - {logoData[0]?.desc}</title>}
       </Head>
 
       <main className="container mx-auto px-2 md:px-20 mt-12 md:mt-32 relative">
