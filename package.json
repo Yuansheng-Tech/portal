@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node ./server/server.js",
     "build": "next build & next export",
-    "start": "NODE_ENV=production node ./server/server.js",
+    "start": "next build & NODE_ENV=production node ./server/server.js",
     "pm2:start:mengqi": "pm2 start npm --name 'mengqi-portal' -- run start",
     "pm2:dev:mengqi": "pm2 start npm --name 'mengqi-portal' -- run dev",
     "lint": "next lint",
