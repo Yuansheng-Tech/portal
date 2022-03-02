@@ -6,4 +6,4 @@ export const indexPageId = '4b4fedad-36b8-4065-b108-8d40c5ba610a'
 export const logoutApi = `/api/admin/logout`;
 
 // 控制服务器渲染之后，是否在本地重新请求数据锁
-export const isFetcherLock = true; // boolean
+export const isFetcherLock = false; // boolean
