@@ -6,7 +6,7 @@
     "dev": "node ./server/server.js",
     "build": "next build & next export",
     "start": "NODE_ENV=production node ./server/server.js",
-    "pm2:dev": "pm2 start npm --name 'youpin-portal' -- run dev",
+    "pm2:dev:mengqi": "pm2 start npm --name 'mengqi-portal' -- run dev",
     "lint": "next lint",
     "prepare": "husky install",
     "precommit": "lint-staged"

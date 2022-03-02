@@ -61,12 +61,11 @@ export default function Nav({
       <a className="relative sm:block sm:flex-1">
         <Edit filter="logo_slogen" />
       {logoAndSlogenData[0].logo && <Image
-        className="flex-1 place-self-center"
+        className="flex-1 place-self-center md:scale-100 scale-50"
         src={logoAndSlogenData[0].logo}
         alt="logo"
         width="62px"
         height="62px"
-        className="md:scale-100 scale-50"
       />}
     </a></Link>
     <div className="fixed z-50 bg-white bottom-0 h-20 py-4 flex inset-x-0 bg-white sm:top-0 md:contents">
@@ -74,7 +73,7 @@ export default function Nav({
       {(stashData['parent'] || []).sort((a: IPageConfigData, b: IPageConfigData) => a.sort - b.sort).map((v: IPageConfigData, k: number) => {
         return <div key={k} className="flex-1 hover-display">
           <div className="text-center">
-            {/\.png$/.test(v.icon) ? <img
+            {/\.png$/.test(v.icon) ? <Image
               className="inline-block"
               src={v.icon}
               alt="logo"
@@ -116,7 +115,7 @@ export default function Nav({
           }}
         >
           {resuldUserData.map((v: IPageConfigData, k: number) => {
-            return <MenuItem className="portal_menu_item" key={k} onClick={(e) => router.push(v.action)}>
+            return <MenuItem className="portal_menu_item" key={k} onClick={() => router.push(v.action)}>
               <ListItemIcon className="portal_menu_icon">
                 {v.action === '/apps' && <Settings fontSize="small" />}
                 {v.action === '/logout' && <Logout fontSize="small" />}
@@ -124,24 +123,6 @@ export default function Nav({
               {v.name}
             </MenuItem>
           })}
-          {/* <MenuItem onClick={(e) => router.push('/apps')}>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          应用列表
-        </MenuItem> */}
-          {/* <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          <span>我的账号</span>
-        </MenuItem> */}
-          {/* <MenuItem onClick={logout}>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          退出
-        </MenuItem> */}
         </Menu></> : <>
         <Link href="/login"><a className="text-green-700 hover:text-gray-700 hover:border hover:border-green-700 p-3 md:p-4">登录</a></Link>
         <Link href="/register"><a className="hover:text-green-700 hover:border-green-700 p-3 md:p-4 border border-gray-300">注册</a></Link>

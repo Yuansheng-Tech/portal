@@ -4,7 +4,6 @@ import { IPageConfigData } from '@/types/common';
 
 import CardOne from './card.one';
 import CardTwo from './card.two';
-import CardThree from './card.three';
 
 export const mapWidth = [
   [2,2],

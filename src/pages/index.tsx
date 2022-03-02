@@ -2,13 +2,13 @@ import Head from 'next/head';
 import Layout from '@/components/layout/layout';
 import { renderMap } from '@/components/card/index';
 
-import {  indexDataApi, logoApi, getAllSideData, getIndexData } from '@/api/data';
+import {   getAllSideData, getIndexData, indexDataApi, logoApi } from '@/api/data';
 import { useFetcher } from '@/api/fetcher';
 import { Edit } from '@/components/common/edit';
 import { IfallbackOptions } from '@/types/common';
 
 export default function Home({ fallback }: IfallbackOptions) {
-  const { data: resuldData = [], error } = useFetcher(indexDataApi, { fallbackData: fallback[indexDataApi]  });
+  const { data: resuldData = [] } = useFetcher(indexDataApi, { fallbackData: fallback[indexDataApi]  });
   const logoData = fallback[logoApi]
   return (
     <Layout>

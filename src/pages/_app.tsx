@@ -24,6 +24,7 @@ export default function App({
     <>
     <Head>
       <link rel="icon" href={slogen.icon} />
+      <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
       {/* <script src="//at.alicdn.com/t/font_3189071_pha284yzpo9.js"></script> */}
       {/* <style type="text/css" src="//at.alicdn.com/t/font_8d5l8fzk5b87iudi.css"></style> */}
     </Head>

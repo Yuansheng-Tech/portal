@@ -6,8 +6,8 @@ module.exports = {
       'admin.yuanshengyoupin.com',
       'file.yuanshengyoupin.com',
       'at.alicdn.com', 
-      'admin.yuansheng.com', 
-      'editor.yuansheng.com'
+      'admin.mengqi.com', 
+      'editor.mengqi.com'
     ],
   },
   // distDir: 'build',

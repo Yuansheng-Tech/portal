@@ -11,35 +11,35 @@ export const Microconfig = [
   //loader: 加载微应用的状态 true | false
   {
     name: 'companies',
-    entry: 'http://admin.yuansheng.com',
+    entry: 'http://admin.mengqi.co',
     container: '#mainView',
     activeRule: '/memo/companies',
     loader,
   },
   {
     name: 'apps',
-    entry: 'http://admin.yuansheng.com',
+    entry: 'http://admin.mengqi.co',
     container: '#mainView',
     activeRule: '/apps',
     loader,
   },
   {
     name: 'app',
-    entry: 'http://admin.yuansheng.com',
+    entry: 'http://admin.mengqi.co',
     container: '#mainView',
     activeRule: '/app',
     loader,
   },
   {
     name: 'luckysheet',
-    entry: 'http://admin.yuansheng.com',
+    entry: 'http://admin.mengqi.co',
     container: '#mainView',
     activeRule: '/luckysheet',
     loader,
   },
   {
     name: 'login',
-    entry: 'http://admin.yuansheng.com',
+    entry: 'http://admin.mengqi.co',
     container: '#mainView',
     activeRule: '/login',
     loader: (loading: boolean) => {
@@ -53,7 +53,7 @@ export const Microconfig = [
   },
   {
     name: 'register',
-    entry: 'http://admin.yuansheng.com',
+    entry: 'http://admin.mengqi.co',
     container: '#mainView',
     activeRule: '/register',
     loader,

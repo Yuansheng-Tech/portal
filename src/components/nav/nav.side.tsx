@@ -5,6 +5,9 @@ import { useFetcher } from "@/api/fetcher";
 import { Edit } from '@/components/common/edit';
 import { IfallbackOptions, IPageConfigData } from '@/types/common';
 
+
+import { jumpToWeixin } from '@/utils/weixin';
+
 export default function NavSide({
   fallback
 }: IfallbackOptions) {
@@ -18,7 +21,7 @@ export default function NavSide({
         <Edit filter="right_side" />
       {resuldData.map((v: IPageConfigData, k: number) => {
         return <div key={k} className="relative hover-display flex-1">
-          <div className="p-1 md:p-2 text-center bg-gray-50 hover:bg-green-300 cursor-pointer">
+          <div onClick={() => jumpToWeixin()} className="p-1 md:p-2 text-center bg-gray-50 hover:bg-green-300 cursor-pointer">
             <Image
               src={v.icon}
               alt="logo"

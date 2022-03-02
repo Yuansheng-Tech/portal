@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { GetServerSidePropsContext } from 'next/types';
 import dayjs from 'dayjs';
 
-import { pageAPI, getPageData, getAllSideData } from '@/api/data';
+import { getAllSideData, getPageData, pageAPI } from '@/api/data';
 import { useFetcher } from '@/api/fetcher';
 import Layout from '@/components/layout/layout';
 import { Edit } from '@/components/common/edit';

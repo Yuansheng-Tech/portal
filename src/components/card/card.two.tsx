@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
 import { IPageConfigData } from '@/types/common'
+import Image from 'next/image';
 
 export default function Card({
   data
@@ -7,7 +8,7 @@ export default function Card({
   data: IPageConfigData
 }) {
   return (<div className="relative h-full flex flex-col overflow-hidden bg-gray-200">
-    {data.banner && <img
+    {data.banner && <Image
       src={data.banner || ''}
       alt={data.name}
       width="100%"
