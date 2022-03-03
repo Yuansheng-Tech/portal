@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "dev": "node ./server/server.js",
-    "build": "next build & next export",
-    "start": "next build & NODE_ENV=production node ./server/server.js",
-    "pm2:start:mengqi": "pm2 start npm --name 'mengqi-portal' -- run start",
-    "pm2:dev:mengqi": "pm2 start npm --name 'mengqi-portal' -- run dev",
+    "dev": "NODE_ENV=production SERVER_ENV=mengqi & node ./server/server.js",
+    "export": "NODE_ENV=production SERVER_ENV=mengqi & next export",
+    "build": "NODE_ENV=production SERVER_ENV=mengqi & next build & next export",
+    "start": "NODE_ENV=production SERVER_ENV=mengqi & next build & node ./server/server.js",
+    "pm2:start:mengqi": "NODE_ENV=production SERVER_ENV=mengqi & pm2 start npm --name 'mengqi-portal' -- run start",
+    "pm2:dev:mengqi": "NODE_ENV=development SERVER_ENV=mengqi & pm2 start npm --name 'mengqi-portal' -- run dev",
     "lint": "next lint",
     "prepare": "husky install",
     "precommit": "lint-staged"
@@ -30,8 +31,8 @@
     "postcss-preset-env": "^7.4.1",
     "qiankun": "^2.6.3",
     "query-string": "^7.0.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "sass": "^1.45.1",
     "stream-array": "^1.1.2",
     "swr": "^1.1.2"

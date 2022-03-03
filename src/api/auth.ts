@@ -18,7 +18,7 @@ export const logout = async () => {
 
 // demo
 function useUser(id: string) {
-  const { data, error } = useSWR(`/api/user/${id}`)
+  const { data, error } = useSWR(`/user/${id}`)
 
   return {
     user: data,

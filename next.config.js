@@ -14,7 +14,7 @@ module.exports = {
   exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
     return {
       '/': { page: '/' },
-      '/p/[id]': { page: '/' },
+      '/p/18718be1-4da0-4800-9091-f054be454d94': { page: '/p/18718be1-4da0-4800-9091-f054be454d94' },
     }
   },
 };
