@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "NODE_ENV=production SERVER_ENV=mengqi & node ./server/server.js",
-    "export": "NODE_ENV=production SERVER_ENV=mengqi & next export",
-    "build": "NODE_ENV=production SERVER_ENV=mengqi & next build & next export",
+    "export": "NODE_ENV=development SERVER_ENV=mengqi & next export",
+    "build": "NODE_ENV=development SERVER_ENV=mengqi & next build",
     "start": "NODE_ENV=production SERVER_ENV=mengqi & next build & node ./server/server.js",
     "pm2:start:mengqi": "NODE_ENV=production SERVER_ENV=mengqi & pm2 start npm --name 'mengqi-portal' -- run start",
     "pm2:dev:mengqi": "NODE_ENV=development SERVER_ENV=mengqi & pm2 start npm --name 'mengqi-portal' -- run dev",

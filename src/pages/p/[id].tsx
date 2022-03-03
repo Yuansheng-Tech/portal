@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { GetServerSidePropsContext } from 'next/types';
 import dayjs from 'dayjs';
 
@@ -44,7 +45,10 @@ export async function getStaticPaths() {
   }
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
+  if (!params || !params.id) {
+    return null
+  }
   return {
     props: {
       fallback: {
