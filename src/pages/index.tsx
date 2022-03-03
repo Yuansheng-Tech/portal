@@ -24,13 +24,24 @@ export default function Home({ fallback }: IfallbackOptions) {
   )
 }
 
-export async function getServerSideProps() {
+export const getStaticProps = async () => {
   return {
-    props: {
-      fallback: {
-        [indexDataApi]: await getIndexData(),
-        ...await getAllSideData()
+      props: {
+        fallback: {
+          [indexDataApi]: await getIndexData(),
+          ...await getAllSideData()
+        }
       }
-    }
   }
 }
+
+// export async function getServerSideProps() {
+//   return {
+//     props: {
+//       fallback: {
+//         [indexDataApi]: await getIndexData(),
+//         ...await getAllSideData()
+//       }
+//     }
+//   }
+// }

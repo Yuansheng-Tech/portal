@@ -35,14 +35,36 @@ export default function Article({ id, fallback }: IfallbackOptions & { id: strin
   )
 }
 
-export async function getServerSideProps({ query }: GetServerSidePropsContext) {
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { id: '18718be1-4da0-4800-9091-f054be454d94' } },
+    ],
+    fallback: true
+  }
+}
+
+export const getStaticProps = async ({ params }) => {
   return {
     props: {
       fallback: {
         ...await getAllSideData(),
-        [pageAPI + query.id]: await getPageData(query.id)
+        [pageAPI + params.id]: await getPageData(params.id)
       },
-      id: query.id
-    }
+      id: params.id
+    },
+    revalidate: 1,
   }
 }
+
+// export async function getServerSideProps({ query }: GetServerSidePropsContext) {
+//   return {
+//     props: {
+//       fallback: {
+//         ...await getAllSideData(),
+//         [pageAPI + query.id]: await getPageData(query.id)
+//       },
+//       id: query.id
+//     }
+//   }
+// }
