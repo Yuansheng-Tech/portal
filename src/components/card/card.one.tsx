@@ -8,7 +8,7 @@ export default function Card({
   data: IPageConfigData
 }) {
   return (<div className="relative h-full overflow-hidden bg-gray-200">
-     {data.banner && <Image
+     {!!data.banner.trim() && <Image
       src={data.banner || ''}
       alt={''}
       width="100%"
