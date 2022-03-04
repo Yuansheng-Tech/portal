@@ -10,6 +10,7 @@ export default function Card({
   return (<div className="relative h-full overflow-hidden bg-gray-200">
      {!!data.banner.trim() && <Image
       src={data.banner || ''}
+      layout="responsive"
       alt={''}
       width="100%"
       height="100%"

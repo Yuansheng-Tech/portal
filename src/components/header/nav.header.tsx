@@ -77,6 +77,7 @@ export default function Nav({
               className="inline-block"
               src={v.icon}
               alt="logo"
+              layout="responsive"
               width="36px"
               height="36px"
             /> : <svg className="inline-block icon" aria-hidden="true">
