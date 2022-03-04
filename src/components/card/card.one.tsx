@@ -13,7 +13,6 @@ export default function Card({
       layout="fill"
       alt={''}
       width="100%"
-      height="100%"
     />}
     <div className="w-full h-40 absolute bg-gray-700  bg-opacity-50 left-0 bottom-0 p-2">
       <div className="text-2xl h-28 text-white">{data.name}</div>
