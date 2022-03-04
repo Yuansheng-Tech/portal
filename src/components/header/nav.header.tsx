@@ -95,7 +95,7 @@ export default function Nav({
     </div>
     <div className="relative flex-1 sm:block text-right md:text-center">
       <Edit filter="user_profile" />
-      {username ? <><Button 
+      {resuldUserData.length && <>{username ? <><Button 
         className="w-84 md:q-full"
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
@@ -126,7 +126,7 @@ export default function Nav({
         </Menu></> : <>
         <Link href="/login"><a className="text-green-700 hover:text-gray-700 hover:border hover:border-green-700 p-3 md:p-4">登录</a></Link>
         <Link href="/register"><a className="hover:text-green-700 hover:border-green-700 p-3 md:p-4 border border-gray-300">注册</a></Link>
-      </>}
+      </>}</>}
     </div>
     </div>
   </div>)
