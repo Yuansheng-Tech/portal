@@ -6,9 +6,9 @@ module.exports = {
       'admin.yuanshengyoupin.com',
       'file.yuanshengyoupin.com',
       'at.alicdn.com', 
-      'admin.mengqi.com', 
-      'editor.mengqi.com',
-      'file.mengqi.com'
+      'admin.mengqi.co', 
+      'editor.mengqi.co',
+      'file.mengqi.co'
     ],
   },
   // distDir: 'build',
