@@ -12,6 +12,7 @@ export default function Card({
       src={data.banner || ''}
       alt={data.name}
       width="100%"
+      hidden="100%"
       className="max-h-72"
     />}
     <div className="w-full bg-green-900  bg-opacity-50 left-0 bottom-0 p-2 flex-1 flex flex-col">
