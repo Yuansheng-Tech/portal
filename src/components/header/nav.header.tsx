@@ -63,7 +63,6 @@ export default function Nav({
       {logoAndSlogenData[0].logo && <Image
         className="flex-1 place-self-center md:scale-100 scale-50"
         src={logoAndSlogenData[0].logo}
-        layout="fill"
         alt="logo"
         width="62px"
         height="62px"
@@ -78,7 +77,6 @@ export default function Nav({
               className="inline-block"
               src={v.icon}
               alt="logo"
-              layout="responsive"
               width="36px"
               height="36px"
             /> : <svg className="inline-block icon" aria-hidden="true">
