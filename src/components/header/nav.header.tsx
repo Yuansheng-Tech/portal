@@ -63,6 +63,7 @@ export default function Nav({
       {logoAndSlogenData[0].logo && <Image
         className="flex-1 place-self-center md:scale-100 scale-50"
         src={logoAndSlogenData[0].logo}
+        layout="fill"
         alt="logo"
         width="62px"
         height="62px"

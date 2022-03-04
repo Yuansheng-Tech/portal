@@ -11,7 +11,7 @@ export default function Card({
     {!!data.banner.trim() && <Image
       src={data.banner || ''}
       alt={data.name}
-      layout="responsive"
+      layout="fill"
       width="100%"
       hidden="100%"
       className="max-h-72"
