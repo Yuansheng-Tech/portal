@@ -95,7 +95,7 @@ export default function Nav({
     </div>
     <div className="relative flex-1 sm:block text-right md:text-center">
       <Edit filter="user_profile" />
-      {resuldUserData.length && <>{username ? <><Button 
+      {!!resuldUserData.length && <>{username ? <><Button 
         className="w-84 md:q-full"
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
